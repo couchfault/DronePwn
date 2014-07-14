@@ -68,7 +68,7 @@ if [[ $ABRT_WHEN_POSSIBLE = true ]]; then exit 0; fi
 
 while (true) do
 	log "[*] Scanning for APs with ESSIDs that contain 'drone'. . ."
-	ntwrks=( $(iwlist scan | grep -B5 'Guest' | grep 'Address:' | awk '{print $5}') )
+	ntwrks=( $(iwlist scan | grep -B5 '[Dd]rone' | grep 'Address:' | awk '{print $5}') )
 	pwn_networks "${ntwrks[@]}"
 	if [[ $ABRT_WHEN_POSSIBLE = true ]]; then exit 0; fi
 	sleep 1
