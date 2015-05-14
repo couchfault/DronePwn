@@ -17,7 +17,7 @@ function warn {
 }
 
 function log {
-	printf "\e[34m%s\e[0m\n" "$1"
+	printf "\e[1m\e[34m%s\e[0m\n" "$1"
 }
 
 function good {
@@ -56,7 +56,7 @@ if [[ -z $1 ]]
 then
 	log "[-] No interface specified, attemting to determine wireless interface (this will not work if you are currently not connected to a network). . ."
 	INTERFACE=$(ifconfig | grep -v '127.0.0.1' | grep -v 'bridge' | grep -B3 -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep flags | awk '{print $1}' | sed 's/://g')
-	good "[-] Selected $INTERFACE as wireless interface"
+	good "[+] Selected $INTERFACE as wireless interface"
 else
 	INTERFACE=$1
 fi
